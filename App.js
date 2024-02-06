@@ -1,56 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
-export default class App extends Component {
-  constructor(){
-    super()
-    this.state = {
-      count:0
-    }
-  } 
-  increment = () => {
-    console.log('incre..')
-    this.setState({count:this.state.count+1})
-  }
-  decrement = () => {
-    console.log('decre..')
-    this.setState({count:this.state.count-1})
-  }
-  render() {
-    return (
-      <>
-        <h1>count:{this.state.count}</h1>
-        <button onClick={this.increment}>+</button>
-        <button onClick={this.decrement}>-</button>
-      </>
-    )
-  }
+import Home from "./pages.jsx/Home";
+import About from "./pages.jsx/About";
+
+const router = createBrowserRouter([
+  {path: "/Home", element :<Home/>},
+  {path:"/about",element: <About/>},
+
+]);
+function App(){
+  return <RouterProvider route = {router} />
+
 }
+  
 
-/*import React, { Component } from 'react'
-
-export default class App extends Component {
-  constructor() {
-    super()
-    this.state={
-      date:1,
-    }
-  }
-  componentDidMount() {
-    setInterval(()=>{(
-      this.setState({date:this.state.date+1})
-    )},1000)
-  }
-  componentDidUpdate() {
-    if(this.state.date==31) {
-      this.state.date=1
-    }
-  }
-  render() {
-    return (
-      <>
-      <h1>Date:{this.state.date}</h1>  
-      </>
-    )
-  }
-}*/
-
+export default App;
